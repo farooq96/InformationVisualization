@@ -1,0 +1,115 @@
+<html>
+   <head>
+      <title> Farooq Shaikh - Assignment1</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.9.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.0.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.2.1"></script>
+      <style>
+         body {
+         font-family: sans-serif;
+         }
+      </style>
+   </head>
+   <body>
+      <table style="width: 850px;" cellspacing="5" cellpadding="5">
+         <tbody>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Name:&nbsp;</strong></td>
+               <td style="vertical-align: top;">Farooq Shaikh</td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Student Number:</strong></td>
+               <td style="vertical-align: top;">19200161</td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Dataset description:</strong></td>
+			   <td style="vertical-align: top;">
+			  <p><a href="https://www.rsa.ie/Documents/NCT/Make%20Model%20Data%202016.csv" target="_blank" rel="noopener">NCT Car Make and Model Data 2016 </a>.</p>
+               <p> This data set contains the details of the various performance and safety tests conducted on 
+			   all the passenger cars and commercial vehicles by the National Car Testing Service (NCT), Ireland in the year 2016. The data set 
+			   provides us the details of the vehicle maker, its model, the year of birth of that model and the results of various tests that were performed 
+			   on the vehicle. Furthermore, the dataset also provides detailed information with regards to the various ‘Fail Items in a particular vehicle model
+			   which relates to the instances of that fail item in the total number of vehicles tested. Overall, 12 major fail items were provided in the dataset along 
+			   with their percentage failure. Some of the fail items or the component in which failure was detected are Braking equipment, chassis, and body, Suspension 
+			   test, light test, Vehicle and safety equipment, etc. </p>
+               </td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Initial questions</strong></td>
+               <td style="vertical-align: top;"> How does the failure percentage change over the year of birth ( also referred to as year of make of model)? Is there a particular trend in the way failure percentage changes? Which year had the highest failure rate? How has the vehicle birth year impacted the test results? Which Year of birth is dominant in the vehicles that were tested? </td>
+            </tr>
+         </tbody>
+      </table>
+      <hr />
+      <div id="vis"></div>
+      <hr />
+      <table style="width: 850px;" cellspacing="5" cellpadding="5">
+         <tbody>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Description:&nbsp;</strong></td>
+               <td style="vertical-align: top;">
+			   The 2D histogram Heatmap or the binned heatmap chart shows the year of birth of various vehicle models on the X-axis and the total number of vehicles on the Y-axis. I have appropriately binned the year so that the information for each year is visible on the x-axis. The tooltip included in the graph makes it possible to hover and find out the details of the particular year. The rectangle used to plot the total number of vehicles for that year of make is colored by the average fail percentage and the scale is provided on the top right corner of the chart.
+			   </td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Insight:</strong></td>
+               <td style="vertical-align: top;"><p> It is clearly evident from the graph that out of all vehicles that were tested by NCT most of them had 2005 as their year of birth. Which was closely followed by 2008. We can see almost a normal distribution of the vehicles by their birth year. The second most important trend that we see over here is more the failure percentage has changed over and improved with the year of make. In the year 1991, the average percentage of vehicles failing the test was 62.72% which is quite high. The average percentage of failure remained hight and remained above 50% until the year 2007. The vehicles of the year of make 2007 were 49.91% and this dropped to 18% for the year of make 2014. We see that the vehicle makers kept incorporating new technologies into the newly designed models to improve its build quality and thereby newer models had a low percentage of failure compared to the older models. It is also worth noticing here that even in the year 2016 there were a large number of vehicles with the year of make before 2005 in Ireland. Which goes on to show how that the automobile industry still relies on the tried and tested versions of their models and there are fewer new models in the market.</p> 
+<p>One of the reasons why the companies did not design many new models after 2008 is probably due to the 2008 global financial crisis that had a disastrous impact on the automobile industry and as a result of which the companies did not probably invest in building new models between 2008 and 2009 hence the year 2009 shows a sudden drop compared to the previous year.</p>
+</td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Design considerations</strong></td>
+               <td style="vertical-align: top;">
+			  <p> A 2D histogram Heatmap is an extension of the well-known histogram.  It shows how the traditional histogram with one additional attribute in terms of color encoding. It is useful to avoid the overplotting that occurs in the scatterplot. I decided to use a 2D histogram with heatmap because it is allowed to represent 3 attributes from the dataset in one single visualization namely, the year of make, total vehicles, and the Average failure percentage. The year was binned appropriately so that we get one single rectangle for one year even after binning. The tooltip was included to provide significant details of the three attributes.  I did not opt small multiples for various years of make because comparing small multiples with each other becomes tedious and the user can also find it difficult to keep track of a large number of small multiples in the chart.</p>
+			  <p> The color encoding used here was red-yellow-green because red generally is associated with high failure and green means safe or low failure rate while yellow and orange show a failure rate which is neither too high nor too low. I believe a user of the graph will find it easy to understand even without having to look at the scale to determine which year of make had a low average percentage of failure.</p>
+
+            </tr>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Data filtering and transformation:&nbsp;</strong></td>
+               <td style="vertical-align: top;"> I selected all the vehicles that were having the year of birth after 1990 because there were too few vehicles having the year of birth before 1990 and hence I did not find it worth including them in the visualization. </td>
+            </tr>
+         </tbody>
+      </table>
+      <script type="text/javascript">
+               var yourVlSpec =  {
+   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/farooq96/InformationVisualization/master/Make%20Model%20Data%202016.csv"
+  },
+  "mark": {"type": "rect", "tooltip": true},
+  "width": 800,
+  "height": 700,
+  "transform": [{"filter": "datum.YearOfBirth >1990"}],
+  "encoding": {
+    "x": {
+      "bin": {"maxbins": 40},
+      "field": "YearOfBirth",
+      "type": "quantitative",
+      "title": "Year of Birth of vehicle Model",
+      "axis": {"format": ""}
+    },
+    "y": {
+      "aggregate": "sum",
+      "stack": null,
+      "field": "Total",
+      "type": "quantitative",
+      "title": "Total vehicles tested"
+    },
+    "color": {
+      "aggregate": "average",
+      "field": "FAIL %",
+      "type": "quantitative",
+      "scale": {"range": ["green", "yellow", "red"]}
+    },
+    "tooltip": [
+      {"field": "YearOfBirth", "type": "quantitative"},
+      {"aggregate": "sum", "field": "Total", "type": "quantitative"},
+      {"aggregate": "average", "field": "FAIL %", "type": "quantitative"}
+    ]
+  },
+  "config": {"view": {"stroke": "transparent"}}
+}
+            vegaEmbed("#vis", yourVlSpec);
+      </script>
+   </body>
+</html>
