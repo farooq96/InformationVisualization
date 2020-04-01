@@ -1,0 +1,123 @@
+<html>
+   <head>
+      <title> Farooq Shaikh - Assignment1</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.9.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.0.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.2.1"></script>
+      <style>
+         body {
+         font-family: sans-serif;
+         }
+      </style>
+   </head>
+   <body>
+      <table style="width: 850px;" cellspacing="5" cellpadding="5">
+         <tbody>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Name:&nbsp;</strong></td>
+               <td style="vertical-align: top;">Farooq Shaikh</td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Student Number:</strong></td>
+               <td style="vertical-align: top;">19200161</td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Dataset description:</strong></td>
+			   <td style="vertical-align: top;">
+			   <p><a href="https://www.rsa.ie/Documents/NCT/Make%20Model%20Data%202016.csv" target="_blank" rel="noopener">NCT Car Make and Model Data 2016 </a>.</p>
+               <p> This data set contains the details of the various performance and safety tests conducted on 
+			   all the passenger cars and commercial vehicles by the National Car Testing Service (NCT), Ireland in the year 2016. The data set 
+			   provides us the details of the vehicle maker, its model, the year of birth of that model and the results of various tests that were performed 
+			   on the vehicle. Furthermore, the dataset also provides detailed information with regards to the various ‘Fail Items in a particular vehicle model
+			   which relates to the instances of that fail item in the total number of vehicles tested. Overall, 12 major fail items were provided in the dataset along 
+			   with their percentage failure. Some of the fail items or the component in which failure was detected are Braking equipment, chassis, and body, Suspension 
+			   test, light test, Vehicle and safety equipment, etc. </p>
+               </td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Initial questions</strong></td>
+               <td style="vertical-align: top;">Which car manufacturers have the highest failure rate? Which Vehicle manufacturers focus the most  on thorough testing
+			   of their vehicles before launching them into the market? </td>
+            </tr>
+         </tbody>
+      </table>
+      <hr />
+      <div id="vis"></div>
+      <hr />
+      <table style="width: 850px;" cellspacing="5" cellpadding="5">
+         <tbody>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Description:&nbsp;</strong></td>
+               <td style="vertical-align: top;">
+			   The bar chart shows the manufacturers having the highest average percentage of vehicle failures. The vehicle manufacturers have been ranked according
+			   to the average number of vehicle failures and the top 15 of them were displayed. The Vehicle manufacturers other than those visible on the graph were grouped
+			   as “All Others” and displayed as one single entity.</td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Insight:</strong></td>
+               <td style="vertical-align: top;">It is evident from the graph that Ford had the highest average number of vehicle failures along with all the car manufacturers 
+			   it was closely followed by Skoda. On an average 228 of the vehicles produced by Ford failed in the tests. Skoda was not far behind with an average of 222 vehicle 
+			   failures. Vehicle manufacturers like Audi and Honda had a low average number of vehicles which is expected as these brands known for their rigorous testing and as 
+			   a result of which the vehicles are thoroughly tested by the manufacturers themselves before launching them into the market. It is surprising to see the German brand
+			   Volkswagen ranked 4 on the chart. On a little research on the web, I found that in the year 2015-2016 Volkswagen was involved in a scandal wherein it had installed
+			   "defeat device" - or software - in diesel engines that could detect when they were being tested, changing the performance accordingly to improve results. One possible
+			   reason could be that results of all Volkswagen vehicles were considered null and void and more stringent testing was done for Volkswagen after the scandal was 
+			   investigated and hence the high numbers of vehicle failures. The full story can be found <a href="https://www.irishtimes.com/business/transport-and-tourism/volkswagen-scandal-what-it-means-for-irish-motorists-update-1.2363067" target="_blank" rel="noopener">here</a>..</td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Design considerations</strong></td>
+               <td style="vertical-align: top;"><p>I have used bar charts as they are very effective and straightforward and can convey the message behind the numbers with impact and meaningful clarity, hence making complex data easy to understand at a glance. Bar charts are ideal for comparing the values of data that can be broken down categorically. In this case, I wanted to compare the mean failures of 15 manufacturers and hence Bar charts were a perfect way of representing this kind of information.</p>
+<p> I decided to plot only the top 14  vehicle manufacturers and combine all the other manufacturers in one variable as ‘All others’ this is to give the user a better sense of how each of these 14 vehicle makers was different from the combined mean of all other makers.</p> 
+<p> I have decided to include the vehicle manufacturer on the X-axis because the data labels were long and having them on the Y-axis made it look cluttered. Instead, having the labels on the X-axis improved the readability of the visualization.</p>
+<p> One limitation of this chart is that it conveys information about two attributes only namely the makers and the mean vehicle failure. One possible alternative could have been box plot which essentially is a five-number summary and conveys a lot more information compared to the bar chart but then box plot wouldn’t have allowed me to show information about the top 15 Carmakers. The space constraint would have meant that only 5 boxes were possible and comparing the median of each manufacturer with the other would have been difficult.</p>
+ </td>
+            </tr>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Data filtering and transformation:&nbsp;</strong></td>
+               <td style="vertical-align: top;">The aggregate function was applied to calculate the mean number of vehicle failures grouped by the vehicle maker then I applied window
+			   transformation to calculate the rank over the sorted data in the descending order in the order of mean and assigned ‘rank’ to each vehicle maker. The higher the mean failure of vehicles the higher the rank. Finally, I applied the filtering to select only those vehicle makers which were ranked below 15, and all others including the one ranked 15 
+			   is included in the “All other” category.</td>
+            </tr>
+         </tbody>
+      </table>
+      <script type="text/javascript">
+               var yourVlSpec =  {
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "description": "Top-K plot with \"others\" by Trevor Manz, adapted from https://observablehq.com/@manzt/top-k-plot-with-others-vega-lite-example.",
+  "title": "Manufacturers with highest average Vehicle Failures across all vehicle models ",
+  "width": 750,
+  "height": 750,
+  "data": {"url": "https://raw.githubusercontent.com/farooq96/InformationVisualization/master/Make%20Model%20Data%202016.csv"},
+  "mark": "bar",
+  "transform": [
+    {
+      "aggregate": [{"op": "mean", "field": "FAIL", "as": "total_fail"}],
+      "groupby": ["VehicleMake"]
+    },
+    {
+      "window": [{"op": "row_number", "as": "rank"}],
+      "sort": [{ "field": "total_fail", "order": "descending" }]
+    },
+    {
+      "calculate": "datum.rank < 20 ? datum.VehicleMake : 'All Others'", "as": "ranked_VehicleMake"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "total_fail",
+      "type": "quantitative",
+      "title": "Average number of vehicle failures"
+    },
+    "tooltip":{"aggregate": "mean", "field":"total_fail", "type":"quantitative"},
+    "y": {
+      "sort": {"op": "mean", "field": "total_fail", "order": "descending"},
+      "field": "ranked_VehicleMake",
+      "type": "ordinal",
+      "title": "Vehicle Make"
+    }
+  }
+}
+            vegaEmbed("#vis", yourVlSpec);
+      </script>
+   </body>
+</html>
