@@ -1,2 +1,5 @@
-# Analysis of NCT Car test for Ireland 
+## Analysis of National Car Test (NCT) results of 2016 for Ireland 
 This data set contains the details of the various performance and safety tests conducted on all the passenger cars and commercial vehicles by the National Car Testing Service (NCT), Ireland in the year 2016. The data set provides us the details of the vehicle maker, its model, the year of birth of that model and the results of various tests that were performed on the vehicle. Furthermore, the dataset also provides detailed information with regards to the various ‘Fail Items in a particular vehicle model which relates to the instances of that fail item in the total number of vehicles tested. Overall, 12 major fail items were provided in the dataset along with their percentage failure. Some of the fail items or the component in which failure was detected are Braking equipment, chassis, and body, Suspension test, light test, Vehicle and safety equipment, etc.
+
+The analysis was done using Vega-Lite, an open source high-level grammar of interactive graphics. It provides a concise JSON syntax for rapidly generating visualizations to support analysis. The code from the HTML can be extracted and copy pasted on the link given below to genrate new visualizations or modify the current ones.
+link: https://vega.github.io/editor/#/custom/vega-li
