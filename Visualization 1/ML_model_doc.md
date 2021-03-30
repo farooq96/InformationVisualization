@@ -2,16 +2,8 @@
 Title       : Documentation for Machine Learning Model  
 Job         : Predict whther a given set of strings (a,b) are match or mismatch. In the given context a--> Product on Receipt and b--> Product matched by Elastic Search 
 Model Used  : XGBoost 
-job         : Johns Hopkins Bloomberg School of Public Health
-logo        : bloomberg_shield.png
-framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
-highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      # 
-url:
-  lib: ../../libraries
-  assets: ../../assets
-widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
-mode        : selfcontained # {standalone, draft}
+Features    : Trained on 16 Numerical features
+Language    : Python
 ---
 
 ## DO: Start With Good Science
@@ -27,7 +19,7 @@ mode        : selfcontained # {standalone, draft}
 
 ---
 
-## DON'T: Do Things By Hand
+## A. MODEL SUMMARY
 
 
 
