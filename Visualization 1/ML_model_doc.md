@@ -1,21 +1,15 @@
 ---
 Title       : Documentation for Machine Learning Model  
-Job         : Predict whther a given set of strings (a,b) are match or mismatch. In the given context a--> Product on Receipt and b--> Product matched by Elastic Search 
+Job         : Predict whether a given set of strings (a,b) are match or mismatch. In the given context a--> Product on Receipt and b--> Product matched by Elastic Search 
 Model Used  : XGBoost 
 Features    : Trained on 16 Numerical features
 Language    : Python
 ---
 
-## DO: Start With Good Science
+## Background  
 
-* Garbage in, garbage out
-
-* Coherent, focused question simplifies many problems
-
-* Working with good collaborators reinforces good practices
-
-* Something that's interesting to you will (hopefully) motivate good
-  habits
+The model is built to leverage the power of Ensemble learning wherein we have used 16 different similarity metrics to predict whether the two input strings are a match or mismatch.
+In recent years, there has been development in the concepts of Ensemble learning and Machine learning algorithm that make use of multiple metrics to capture a wide variety of features from the string which cannot be captured by any one similarity metric. In other words, Levenshtein captures the number of edits required to transform string but it ignores the actual distance between the two strings. On the other hand, a metric like longest common subsequence captures the features as to how many characters are the same in two given string, while cosine similarity adopts a more holistic approach by converting the strings to vectors and then measures the cosine of the angle between two vectors projected in a multi-dimensional space. The smaller the angle, the higher the cosine similarity. The idea that I am trying to put across is that every similarity measure captures one particularly unique feature. What if we could find a way to combine various similarity measures and design a system that is not over-reliant on the cons of one particular similarity metric? it would mean the system is robust and deal with a wide variety of string matching without compromising on the False positive rate ( which we will address in this document as we proceed further) This method is a proved and established method to improve accuracy and performance. 
 
 ---
 
