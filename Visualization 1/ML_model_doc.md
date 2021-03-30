@@ -1,6 +1,7 @@
 ---
 Title       : Documentation for Machine Learning Model  
 Job         : Predict whether a given set of strings (a,b) are match or mismatch. In the given context a--> Product on Receipt and b--> Product matched by Elastic Search 
+Output      : Binary output; 0 signifies a mismatch prediction and 1 signifies a match prediction
 Model Used  : XGBoost 
 Features    : Trained on 16 Numerical features
 Language    : Python
@@ -11,13 +12,16 @@ Language    : Python
 The model is built to leverage the power of Ensemble learning wherein we have used 16 different similarity metrics to predict whether the two input strings are a match or mismatch.
 In recent years, there has been development in the concepts of Ensemble learning and Machine learning algorithm that make use of multiple metrics to capture a wide variety of features from the string which cannot be captured by any one similarity metric. In other words, Levenshtein captures the number of edits required to transform string but it ignores the actual distance between the two strings. On the other hand, a metric like longest common subsequence captures the features as to how many characters are the same in two given string, while cosine similarity adopts a more holistic approach by converting the strings to vectors and then measures the cosine of the angle between two vectors projected in a multi-dimensional space. The smaller the angle, the higher the cosine similarity. The idea that I am trying to put across is that every similarity measure captures one particularly unique feature. What if we could find a way to combine various similarity measures and design a system that is not over-reliant on the cons of one particular similarity metric? it would mean the system is robust and deal with a wide variety of string matching without compromising on the False positive rate ( which we will address in this document as we proceed further) This method is a proved and established method to improve accuracy and performance. 
 
+
 ---
 
 ## A. MODEL SUMMARY
 
+* Training Method: 
 
+A collection of about 1000 receipts were run through the existing algorithm and the the results of the product on receipt hereafter refered to as input search string and the product matched were saved in a CSV file. The resultant training dataset contained arounf 8k rows signifying 8k products and their corresponsding matches found by the preexisting algorithm. After this, all the product and the their matches were manually labelleed as 0 (mismatch) or 1 (match) to form the training dataset required for supervised machine learning algorithm. 
 
-* Editing spreadsheets of data to "clean it up"
+Another crucial step in preparation of the training data was calculating the 16 similarity metrics for each record in our previous genrated CSV file. The model we are building is a classification model which makes a prediction or the classification based on a set of features and for the model needs to learn what set of features are needed for it to know that the pair of strings are the same or the pair of strings are different.
 
   - Removing outliers
   - QA / QC
