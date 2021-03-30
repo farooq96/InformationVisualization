@@ -1,4 +1,3 @@
-
 ---
 title       : Reproducible Research Checklist
 subtitle    : What to Do and What Not to Do
