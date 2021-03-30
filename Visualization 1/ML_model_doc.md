@@ -23,9 +23,15 @@ A collection of about 1000 receipts were run through the existing algorithm and 
 
 Another crucial step in preparation of the training data was calculating the 16 similarity metrics for each record in our previous genrated CSV file. The model we are building is a classification model which makes a prediction or the classification based on a set of features and for the model needs to learn what set of features are needed for it to know that the pair of strings are the same or the pair of strings are different.
 
-  - Removing outliers
-  - QA / QC
-  - Validating
+* Description of the 16 Features used for training are:
+  - Prefix Similarity: Checks if the prefixes are same for the given strings
+  - Postfix Similarity: checks if the postfix matches for the given strings
+  - get_similarity (custom built function) : Returns simple cosine similarity for the given strings
+  - Dice Coefficient (Tri-gram) : Dice Coefficient is 2 * the number of characters common between the two strings divided by the total number of characters in both string
+  - Dice Coefficient (Bi-gram)
+  - strCmp95: Originally written in C.The strcmp95 function returns a double precision value from 0.0 (total disagreement) to 1.0 (character-by-character agreement)
+  - string_similarity : Perform bigram comparison between two strings and return a percentage match in decimal form 
+  - Jaro-Winkler : Jaro-Winkler modifies the standard Jaro distance metric by putting extra weight on string differences at the start of the strings to be compared. The metric is scaled between 0 (not similar at all) and 1 (exact match).
 
 * Editing tables or figures (e.g. rounding, formatting)
 
