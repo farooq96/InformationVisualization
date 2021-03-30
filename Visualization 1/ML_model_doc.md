@@ -24,6 +24,7 @@ A collection of about 1000 receipts were run through the existing algorithm and 
 Another crucial step in preparation of the training data was calculating the 16 similarity metrics for each record in our previous genrated CSV file. The model we are building is a classification model which makes a prediction or the classification based on a set of features and for the model needs to learn what set of features are needed for it to know that the pair of strings are the same or the pair of strings are different.
 
 * Description of the 16 Features used for training are:
+
   - Prefix Similarity: Checks if the prefixes are same for the given strings
   - Postfix Similarity: checks if the postfix matches for the given strings
   - get_similarity (custom built function) : Returns simple cosine similarity for the given strings
@@ -32,18 +33,12 @@ Another crucial step in preparation of the training data was calculating the 16 
   - strCmp95: Originally written in C.The strcmp95 function returns a double precision value from 0.0 (total disagreement) to 1.0 (character-by-character agreement)
   - string_similarity : Perform bigram comparison between two strings and return a percentage match in decimal form 
   - Jaro-Winkler : Jaro-Winkler modifies the standard Jaro distance metric by putting extra weight on string differences at the start of the strings to be compared. The metric is scaled between 0 (not similar at all) and 1 (exact match).
-
-* Editing tables or figures (e.g. rounding, formatting)
-
-* Downloading data from a web site (clicking links in a web browser)
-
-* Moving data around your computer; splitting / reformatting data files
-
-* "We're just going to do this once...."
-
-
-Things done by hand need to be precisely documented (this is harder
-than it sounds)
+  - cosine_similarity_ngrams: Custom implementation of cosine similarity for ngrams where is it takes n as the number of grams or smallest tokens that make up the string
+  - cosine_similarity_ngrams : n = 2 and hence bi-gram cosine similarity
+  - cosine_similarity_ngrams : n = 3 and hence Tri-gram cosine similarity
+  - jaccard_distance: it is defined as the size of the intersection divided by the size of the union of two sets
+  - fuzz_token_sort_ratio (bi-gram) : Fuzzy Wuzzy token sort ratio raw raw_score is a measure of the strings similarity as an int in the range [0, 100]. For two strings X and Y, the score is obtained by splitting the two strings into tokens and then sorting the tokens. The score is then the fuzzy wuzzy ratio raw score of the transformed strings. Fuzzy Wuzzy token sort sim score is a float in the range [0, 1] and is obtained by dividing the raw score by 100.
+  - fuzz_token_sort_ratio (tri-gram)
 
 ---
 
