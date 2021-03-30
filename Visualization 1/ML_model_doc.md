@@ -1,7 +1,7 @@
 ---
-title       : Reproducible Research Checklist
-subtitle    : What to Do and What Not to Do
-author      : Roger D. Peng, Associate Professor of Biostatistics
+Title       : Documentation for Machine Learning Model  
+Job         : Predict whther a given set of strings (a,b) are match or mismatch. In the given context a--> Product on Receipt and b--> Product matched by Elastic Search 
+Model Used  : XGBoost 
 job         : Johns Hopkins Bloomberg School of Public Health
 logo        : bloomberg_shield.png
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
