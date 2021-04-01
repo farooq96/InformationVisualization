@@ -4,7 +4,7 @@ Job         : Predict whether a given set of strings (a,b) are match or mismatch
 Output      : Binary output; 0 signifies a mismatch prediction and 1 signifies a match prediction
 Model Used  : XGBoost 
 Features    : Trained on 16 Numerical features
-Language    : Python
+Model file  : Written in Python and saved in .sav file (SPSS System Data File Format Family) using the Pickle library 
 ---
 
 ## Background  
