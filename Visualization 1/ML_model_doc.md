@@ -51,10 +51,10 @@ The following Bar chart shows the ranked featured that the model has learned the
 
 ---
 
-## DON'T: Point And Click
+## System Flow:
 
-* Many data processing / statistical analysis packages have graphical
-  user interfaces (GUIs)
+* Receipt read by the OCR 
+* Line by line OCR output is passed to match_product 
 
 * GUIs are convenient / intuitive but the actions you take with a GUI
   can be difficult for others to reproduce
