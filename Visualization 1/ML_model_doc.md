@@ -32,7 +32,9 @@ Another crucial step in preparation of the training data was calculating the 16 
   - Dice Coefficient (Bi-gram)
   - strCmp95: Originally written in C.The strcmp95 function returns a double precision value from 0.0 (total disagreement) to 1.0 (character-by-character agreement)
   - string_similarity : Perform bigram comparison between two strings and return a percentage match in decimal form 
-  - Jaro-Winkler : Jaro-Winkler modifies the standard Jaro distance metric by putting extra weight on string differences at the start of the strings to be compared. The metric is scaled between 0 (not similar at all) and 1 (exact match).
+  - Jaro-Winkler : Jaro-Winkler modifies the standard Jaro distance metric by putting extra weight on string differences at the start of the strings to be compared. The metric is scaled between 0 (not similar at all) and 1 (exact match)
+  - NeedlemanWunsch : Similarity based on pairewise sequence alignment.Sequence alignment is a method of arranging sequences of DNA, RNA, or protein to identify regions of similarity. 
+  - Longest common Subsequence(LCS) : A longest common subsequence (LCS) is a common subsequence of two strings of maximum length
   - cosine_similarity_ngrams: Custom implementation of cosine similarity for ngrams where is it takes n as the number of grams or smallest tokens that make up the string
   - cosine_similarity_ngrams : n = 2 and hence bi-gram cosine similarity
   - cosine_similarity_ngrams : n = 3 and hence Tri-gram cosine similarity
