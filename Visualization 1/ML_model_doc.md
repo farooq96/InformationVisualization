@@ -42,6 +42,10 @@ Another crucial step in preparation of the training data was calculating the 16 
   - fuzz_token_sort_ratio (bi-gram) : Fuzzy Wuzzy token sort ratio raw raw_score is a measure of the strings similarity as an int in the range [0, 100]. For two strings X and Y, the score is obtained by splitting the two strings into tokens and then sorting the tokens. The score is then the fuzzy wuzzy ratio raw score of the transformed strings. Fuzzy Wuzzy token sort sim score is a float in the range [0, 1] and is obtained by dividing the raw score by 100.
   - fuzz_token_sort_ratio (tri-gram)
 
+
+* Feature Importance:
+![Feature importance Plot](https://github.com/farooq96/Vega-lite_visualizations/blob/master/Visualization%201/FEature%20inportance.jpg?raw=true)
+
 ---
 
 ## DON'T: Point And Click
