@@ -54,7 +54,12 @@ The following Bar chart shows the ranked featured that the model has learned the
 ## System Flow:
 
 * Receipt read by the OCR 
-* Line by line OCR output is passed to match_product 
+* Line by line OCR output is passed to match_product function
+* For each input line, we remove numbers, special characters using regex to ensure only text remains
+* We remove any stopwords that may be present in the text
+* The input text or the search string is then matched with both the Alias table and the Products table using Elastic Search 
+* we do nott use the scores returned by Elastic search because it is machine dependent and are inconsistent across systems
+* We reject any match that does not yeild a cosine trigram similarity score of 58% for alias table, 56% for the alias table and at the same time fuzzy token sort ratio of 85% 
 
 * GUIs are convenient / intuitive but the actions you take with a GUI
   can be difficult for others to reproduce
