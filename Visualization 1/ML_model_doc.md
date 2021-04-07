@@ -62,7 +62,8 @@ The following Bar chart shows the ranked featured that the model has learned the
 * We reject any products table match that does not yeild a cosine trigram similarity score of 58% and fuzzy token sort ratio of 56% 
 * similary, we reject any alias table match that does not yeild cosine trigram scorre of 56% or the fuzzy token sort ratio of 85% 
 * From the product table match and the aias table match that go through, we select the best match by giving a priority to the products table match followed by alias table match and we also comapre the fuzzy token sort score for both in case we get matches from product as well as alias table. Whichever has the highest score becomes our matched product
-* 
+* Once we have the best matched product, we pass it to the xg_boost_model function
+* The xg_boost_model functions accepts two input parameters:
 
 * GUIs are convenient / intuitive but the actions you take with a GUI
   can be difficult for others to reproduce
