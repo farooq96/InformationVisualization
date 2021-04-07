@@ -47,7 +47,7 @@ Another crucial step in preparation of the training data was calculating the 16 
 
 The following Bar chart shows the ranked featured that the model has learned the most from.
 
-![Feature importance Plot](https://github.com/farooq96/Vega-lite_visualizations/blob/master/Visualization%201/FEature%20inportance.jpg?raw=true)
+![Feature importance Plot](./feature_importance.jpg?raw=true)
 
 ---
 
