@@ -72,7 +72,7 @@ The following Bar chart shows the ranked featured that the model has learned the
 ## Performance and testing Methodology
 
 * The Raw performance Metrics of the Model alone without any FP reducing Filters is summarized in the follwoing :
-* ![image info](./confusion_matrix.png)
+* ![Confusion Matrix](./confusion_matrix.jpg?raw=true)
 
 * Algorithm was tested on 30 receipts from Irish and UK market and found 473 correct matches & FP rate --> 5/472*100 = 1.05%
 
