@@ -64,19 +64,8 @@ The following Bar chart shows the ranked featured that the model has learned the
 * From the product table match and the aias table match that go through, we select the best match by giving a priority to the products table match followed by alias table match and we also comapre the fuzzy token sort score for both in case we get matches from product as well as alias table. Whichever has the highest score becomes our matched product
 * Once we have the best matched product, we pass it to the xg_boost_model function
 * The xg_boost_model functions accepts two input parameters: search string and the matched product and returns 1 if the prediction is that both are a match else it returns 0 
-* The function works a
-
-* GUIs are convenient / intuitive but the actions you take with a GUI
-  can be difficult for others to reproduce
-
-* Some GUIs produce a log file or script which includes equivalent
-  commands; these can be saved for later examination
-
-* In general, be careful with data analysis software that is highly
-  *interactive*; ease of use can sometimes lead to non-reproducible
-  analyses
-
-* Other interactive software, such as text editors, are usually fine
+* The function calculates all the 16 metrics for the given two inputs, which are then paased to the model as inputs to make the prediction. 
+* The model is trained to penalize false positives and therefore may miss few true positives or correct matches. To compensate the loss, whenever the model predicts as mismatch we compare the fuzzy token sort ratio and cosine bigram similarity after removing all the stop words from the comparing strings. If both the scores are above 80 then we change the class label from mismatch (0) to match (1)
 
 ---
 
